@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'fr.ffepgv.sandbox',
   appName: 'Sandbox',
-  webDir: 'dist'
+  webDir: 'public'
 };
 
 export default config;
