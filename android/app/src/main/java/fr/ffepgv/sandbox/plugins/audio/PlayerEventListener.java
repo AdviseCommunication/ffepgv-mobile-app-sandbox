@@ -4,8 +4,11 @@ import android.util.Log;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.PluginCall;
+
+import androidx.annotation.OptIn;
 import androidx.media3.common.Player;
 import androidx.media3.common.PlaybackException;
+import androidx.media3.common.util.UnstableApi;
 
 public class PlayerEventListener implements Player.Listener {
     private static final String TAG = "PlayerEventListener";
@@ -13,6 +16,7 @@ public class PlayerEventListener implements Player.Listener {
     private AudioPlayerPlugin plugin;
     private AudioSource audioSource;
 
+    @OptIn(markerClass = UnstableApi.class)
     public PlayerEventListener(AudioPlayerPlugin plugin, AudioSource audioSource) {
         this.plugin = plugin;
         this.audioSource = audioSource;
