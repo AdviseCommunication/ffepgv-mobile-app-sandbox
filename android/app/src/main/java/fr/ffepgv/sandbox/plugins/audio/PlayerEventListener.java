@@ -10,7 +10,7 @@ import androidx.media3.common.Player;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.util.UnstableApi;
 
-public class PlayerEventListener implements Player.Listener {
+@UnstableApi public class PlayerEventListener implements Player.Listener {
     private static final String TAG = "PlayerEventListener";
 
     private AudioPlayerPlugin plugin;
