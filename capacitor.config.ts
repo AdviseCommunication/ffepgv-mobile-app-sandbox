@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'fr.ffepgv.sandbox',
   appName: 'Sandbox',
   webDir: 'dist',
-  plugins: {}
+  plugins: {
+    'AudioPlayer': {}
+  }
 };
 
 export default config;
