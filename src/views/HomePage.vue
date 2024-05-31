@@ -59,6 +59,7 @@ let duration = ref(0);
 let statut = ref('stopped');
 let playingSpeed = ref(1);
 let progressTimeout: any = null;
+let durationTimeout: any = null;
 const player = AudioPlayer.create({
   audioId: 'sample',
   audioSource: 'https://advise.fr/sample.mp3',
@@ -75,6 +76,13 @@ const updateDuration = () => {
   AudioPlayer.getDuration({
     audioId: 'sample'
   }).then((result) => {
+    if (result.duration <= 0) {
+      durationTimeout = setTimeout(() => {
+        updateDuration();
+      }, 1000);
+      duration.value = progress.value;
+      return ;
+    }
     duration.value = result.duration;
   }).catch((reason: any) => {
     error.value = reason.toString();
