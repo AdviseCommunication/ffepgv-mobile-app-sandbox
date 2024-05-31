@@ -126,6 +126,9 @@ const play = () => {
           updateDuration();
           updateProgress();
       }
+      if (progress.value > 0) {
+        setProgress(progress.value);
+      }
     }).catch((reason: any) => {
       error.value = reason.toString();
     });
@@ -159,12 +162,7 @@ const pause = () => {
 }
 
 const seek = (event: any) => {
-  AudioPlayer.seek({
-    audioId: 'sample',
-    timeInSeconds: parseInt(event.target.value, 10)
-  }).catch((reason: any) => {
-    error.value = reason.toString();
-  });
+  setProgress(parseInt(event.target.value, 10));
 }
 
 const togglePause = () => {
@@ -189,6 +187,15 @@ const setSpeed = (speed: number) => {
     rate: speed
   }).then(() => {
     playingSpeed.value = speed;
+  }).catch((reason: any) => {
+    error.value = reason.toString();
+  });
+}
+
+const setProgress = (progress: number) => {
+  AudioPlayer.seek({
+    audioId: 'sample',
+    timeInSeconds: progress
   }).catch((reason: any) => {
     error.value = reason.toString();
   });
