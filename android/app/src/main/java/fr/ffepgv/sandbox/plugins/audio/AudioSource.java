@@ -2,11 +2,14 @@ package fr.ffepgv.sandbox.plugins.audio;
 
 import android.content.Context;
 
+import androidx.annotation.OptIn;
 import androidx.media3.common.AudioAttributes;
 import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
+import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 
+@UnstableApi
 public class AudioSource {
     private static final String TAG = "AudioSource";
 
@@ -26,6 +29,7 @@ public class AudioSource {
     private boolean isStopped = true;
     private boolean loopAudio = false;
 
+    @OptIn(markerClass = UnstableApi.class)
     public AudioSource(
             AudioPlayerPlugin pluginOwner,
             String id,
@@ -44,6 +48,7 @@ public class AudioSource {
         this.loopAudio = loopAudio;
     }
 
+    @OptIn(markerClass = UnstableApi.class)
     public void initialize(Context context) {
         if (player != null) {
             return;
@@ -115,6 +120,7 @@ public class AudioSource {
         player.seekToDefaultPosition();
     }
 
+    @OptIn(markerClass = UnstableApi.class)
     public void stopThroughService() {
         serviceOwner.stop(id);
     }
@@ -159,6 +165,7 @@ public class AudioSource {
         this.isStopped = isStopped;
     }
 
+    @OptIn(markerClass = UnstableApi.class)
     public void setServiceOwner(AudioPlayerService service) {
         this.serviceOwner = service;
     }
