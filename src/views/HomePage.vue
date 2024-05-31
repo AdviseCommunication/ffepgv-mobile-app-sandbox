@@ -91,7 +91,7 @@ const updateProgress = () => {
   AudioPlayer.getCurrentTime({
     audioId: 'sample'
   }).then((result) => {
-    progress.value = result.currentTime;
+    progress.value = Math.ceil(result.currentTime);
     progressTimeout = setTimeout(() => {
       updateProgress();
     }, 1000);
